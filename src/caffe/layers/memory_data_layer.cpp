@@ -20,10 +20,10 @@ void MemoryDataLayer<Dtype>::DataLayerSetUp(const vector<Blob<Dtype>*>& bottom,
       " positive in memory_data_param";
   (*top)[0]->Reshape(batch_size_, this->datum_channels_, this->datum_height_,
                      this->datum_width_);
-  (*top)[1]->Reshape(batch_size_, 1, 1, 1);
+  (*top)[1]->Reshape(batch_size_, 2, 1, 1);
   added_data_.Reshape(batch_size_, this->datum_channels_, this->datum_height_,
                       this->datum_width_);
-  added_label_.Reshape(batch_size_, 1, 1, 1);
+  added_label_.Reshape(batch_size_, 2, 1, 1);
   data_ = NULL;
   labels_ = NULL;
   added_data_.cpu_data();

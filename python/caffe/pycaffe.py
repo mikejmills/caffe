@@ -339,9 +339,17 @@ def _Net_set_input_arrays(self, data, labels):
     Set input arrays of the in-memory MemoryDataLayer.
     (Note: this is only for networks declared with the memory data layer.)
     """
+    
     if labels.ndim == 1:
         labels = np.ascontiguousarray(labels[:, np.newaxis, np.newaxis,
                                              np.newaxis])
+
+    if labels.ndim == 2:
+        print "2 DIMS"
+        labels = np.ascontiguousarray(labels[:, :, np.newaxis,
+                                             np.newaxis])
+        print labels.ndim
+    
     return self._set_input_arrays(data, labels)
 
 

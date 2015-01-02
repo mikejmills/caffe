@@ -107,7 +107,7 @@ void PyNet::set_input_arrays(bp::object data_obj, bp::object labels_obj) {
       reinterpret_cast<PyArrayObject*>(labels_obj.ptr());
   check_contiguous_array(data_arr, "data array", md_layer->datum_channels(),
       md_layer->datum_height(), md_layer->datum_width());
-  check_contiguous_array(labels_arr, "labels array", 1, 1, 1);
+  check_contiguous_array(labels_arr, "labels array", 2, 1, 1);
   if (PyArray_DIMS(data_arr)[0] != PyArray_DIMS(labels_arr)[0]) {
     throw std::runtime_error("data and labels must have the same first"
         " dimension");
